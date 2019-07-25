@@ -1,8 +1,10 @@
 '''
 This is the net model of Environmental features recognition for lower limb prostheses toward predictive walking.
 If you think this code is useful, please cite:
-[1]K. Zhang et al., “Environmental features recognition for lower limb prostheses toward predictive walking,”
+[1][1]K. Zhang, C. Xiong, W. Zhang, H. Liu, D. Lai, Y. Rong, and C. Fu, 
+“Environmental features recognition for lower limb prostheses toward predictive walking,” 
 IEEE Transactions on Neural Systems and Rehabilitation Engineering, vol. 27, no. 3, pp. 465–476, Mar. 2019.
+
 '''
 
 from __future__ import print_function
