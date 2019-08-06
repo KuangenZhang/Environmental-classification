@@ -8,7 +8,7 @@ K. Zhang, C. Xiong, W. Zhang, H. Liu, D. Lai, Y. Rong, and C. Fu, “Environment
 
 For more related works and codes, please view my homepage: https://kuangenzhang.github.io/
 
-For Further information, please contact Kuangen Zhang (kuangen.zhang@alumni.ubc.ca).
+For further information, please contact Kuangen Zhang (kuangen.zhang@alumni.ubc.ca).
 
 
 ## Run
