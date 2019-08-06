@@ -102,11 +102,13 @@ model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adadelta(),
               metrics=['accuracy'])
 
-model.fit(x_train, y_train,
-          batch_size=batch_size,
-          epochs=epochs,
-          verbose=1,
-          validation_split=0.25, callbacks=[checkpoint])
+is_train = False
+if is_train:
+    model.fit(x_train, y_train,
+              batch_size=batch_size,
+              epochs=epochs,
+              verbose=1,
+              validation_split=0.25, callbacks=[checkpoint])
 
 # load the best model
 model.load_weights(model_path)
