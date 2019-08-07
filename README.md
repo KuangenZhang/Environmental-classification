@@ -28,8 +28,18 @@ Further information please contact Kuangen Zhang (kuangen.zhang@alumni.ubc.ca).
 
 ## Citation
 If you find our work useful in your research, please consider citing:
-
-K. Zhang, C. Xiong, W. Zhang, H. Liu, D. Lai, Y. Rong, and C. Fu, “Environmental features recognition for lower limb prostheses toward predictive walking,” IEEE Transactions on Neural Systems and Rehabilitation Engineering, vol. 27, no. 3, pp. 465–476, Mar. 2019.
+```bash
+@article{zhang_environmental_2019,
+	title = {Environmental features recognition for lower limb prostheses toward predictive walking},
+	volume = {27},
+	issn = {1534-4320},
+	number = {3},
+	journal = {IEEE Transactions on Neural Systems and Rehabilitation Engineering},
+	author = {Zhang, K. and Xiong, C. and Zhang, W. and Liu, H. and Lai, D. and Rong, Y. and Fu, C.},
+	month = mar,
+	year = {2019}
+}
+```
 
 
 ## License
