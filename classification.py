@@ -12,6 +12,7 @@ import keras
 import glob
 import numpy as np
 import cv2
+import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from keras.datasets import mnist
 from keras.models import Sequential
@@ -20,6 +21,7 @@ from keras.layers import Conv2D, MaxPooling2D, BatchNormalization
 from keras.callbacks import ModelCheckpoint
 from keras import backend as K
 from zipfile import ZipFile
+
 
 
 def load_data(path = 'data/', num_classes = 6, image_shape = (100, 100, 1)):
@@ -45,6 +47,17 @@ def load_data(path = 'data/', num_classes = 6, image_shape = (100, 100, 1)):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, 
                                                         random_state=1)
     return (X_train, y_train), (X_test, y_test)
+
+
+def stats_graph(graph):
+    flops = tf.profiler.profile(graph, options=tf.profiler.ProfileOptionBuilder.float_operation())
+    params = tf.profiler.profile(graph, options=tf.profiler.ProfileOptionBuilder.trainable_variables_parameter())
+    print('FLOPs: {};    Trainable params: {}'.format(flops.total_float_ops, params.total_parameters))
+
+def calc_net_size():
+    sess = K.get_session()
+    graph = sess.graph
+    stats_graph(graph)
 
 
 batch_size = 128
@@ -112,6 +125,9 @@ if is_train:
 
 # load the best model
 model.load_weights(model_path)
+calc_net_size()
+
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
+
