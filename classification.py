@@ -61,7 +61,7 @@ def calc_net_size():
 
 
 batch_size = 128
-num_classes = 6
+num_classes = 5
 epochs = 30
 
 image_shape = (100, 100, 1)
@@ -100,10 +100,12 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(64, (3, 3), activation='relu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+model.add(Dropout(0.1))
 model.add(Flatten())
-#model.add(Dense(128, activation='relu'))
-#model.add(Dropout(0.5))
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.1))
+model.add(Dense(32, activation='relu'))
+model.add(Dropout(0.1))
 model.add(Dense(num_classes, activation='softmax'))
 
 model_path = 'checkpoint/best_model.h5'
@@ -115,7 +117,7 @@ model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adadelta(),
               metrics=['accuracy'])
 
-is_train = False
+is_train = True
 if is_train:
     model.fit(x_train, y_train,
               batch_size=batch_size,
@@ -124,8 +126,8 @@ if is_train:
               validation_split=0.25, callbacks=[checkpoint])
 
 # load the best model
-model.load_weights(model_path)
-calc_net_size()
+# model.load_weights(model_path)
+# calc_net_size()
 
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
