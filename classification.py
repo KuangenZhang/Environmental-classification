@@ -7,6 +7,7 @@ IEEE Transactions on Neural Systems and Rehabilitation Engineering, vol. 27, no.
 
 '''
 
+
 from __future__ import print_function
 import keras
 import glob
@@ -60,7 +61,7 @@ def calc_net_size():
     stats_graph(graph)
 
 
-batch_size = 128
+batch_size = 16
 num_classes = 5
 epochs = 30
 
@@ -91,22 +92,26 @@ print('x_train shape:', x_train.shape)
 print(x_train.shape[0], 'train samples')
 print(x_test.shape[0], 'test samples')
 
+# deep CNN
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3, 3),
+model.add(Conv2D(64, kernel_size=(3, 3),
                  activation='relu',
                  input_shape=input_shape))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(Conv2D(128, kernel_size=(3, 3),
+                 activation='relu',
+                 input_shape=input_shape))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(256, (3, 3), activation='relu'))
+model.add(BatchNormalization())
 model.add(Dropout(0.1))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.1))
-model.add(Dense(32, activation='relu'))
-model.add(Dropout(0.1))
+model.add(Dense(64, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
+
 
 model_path = 'checkpoint/best_model.h5'
 checkpoint = ModelCheckpoint(model_path, 
