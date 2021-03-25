@@ -119,7 +119,7 @@ checkpoint = ModelCheckpoint(model_path,
                              save_best_only=True, mode='auto')
 
 model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=keras.optimizers.Adadelta(),
+              optimizer=keras.optimizers.Adam(),
               metrics=['accuracy'])
 
 is_train = True
