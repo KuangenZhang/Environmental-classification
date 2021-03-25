@@ -61,7 +61,7 @@ def calc_net_size():
     stats_graph(graph)
 
 
-batch_size = 16
+batch_size = 128
 num_classes = 5
 epochs = 30
 
@@ -119,7 +119,7 @@ checkpoint = ModelCheckpoint(model_path,
                              save_best_only=True, mode='auto')
 
 model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=keras.optimizers.Adadelta(),
+              optimizer=keras.optimizers.Adam(),
               metrics=['accuracy'])
 
 is_train = True
