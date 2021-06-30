@@ -18,7 +18,7 @@ This repository includes 2D binary image dataset and a CNN model based on Keras.
 python classification.py
 ```
 
-I just uploaded the environmental classification algorithm because I think it should be the most useful part. If you want me to upload the image preprocessing and environmental parameter estimation part, please leave a message in the issue or send an email to me directly. 
+The image preprocessing and environmental parameter estimation codes are contained in EFRS_simu.zip
 
 ## Contact
 
